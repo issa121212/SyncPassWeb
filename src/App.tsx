@@ -1,16 +1,31 @@
-import { useAuth } from 'react-oidc-context'
+import { lazy, Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
+import AuthBoundary from './auth/AuthBoundary'
 import RequireAuth from './auth/RequireAuth'
 import LoginPage from './pages/LoginPage'
+import PageLoading from './components/PageLoading'
+
+// The public login does not need the dashboard code until authentication succeeds.
+const DashboardLayout = lazy(() => import('./layouts/DashboardLayout'))
+const DashboardEntry = lazy(() => import('./auth/DashboardEntry'))
+const ModulePage = lazy(() => import('./pages/ModulePage'))
 
 export default function App() {
-  const auth = useAuth()
-  if (auth.isLoading || auth.activeNavigator) return <main className="status-page"><section className="status-card" role="status"><span className="spinner" aria-hidden="true"/><h1>Preparando tu sesión</h1><p>Espera un momento…</p></section></main>
-  if (auth.error) return <main className="status-page"><section className="status-card"><p className="eyebrow">NO PUDIMOS INICIAR LA SESIÓN</p><h1>Volvamos a intentarlo</h1><p>La solicitud pudo haber vencido o la configuración de acceso necesita revisión. Inicia el proceso nuevamente desde esta aplicación.</p><a className="primary-button" href="/">Volver al inicio</a></section></main>
-  return <Routes>
-    <Route path="/" element={<LoginPage />} />
-    <Route path="/auth/callback" element={<Navigate to="/" replace />} />
-    <Route element={<RequireAuth />}><Route path="/app" element={<main aria-label="Área autenticada" />} /></Route>
-    <Route path="*" element={<Navigate to="/" replace />} />
-  </Routes>
+  return (
+    <Suspense fallback={<PageLoading fullScreen />}>
+      <Routes>
+        <Route element={<AuthBoundary />}>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/auth/callback" element={<Navigate to="/" replace />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/app" element={<DashboardLayout />}>
+              <Route index element={<DashboardEntry />} />
+              <Route path=":module" element={<ModulePage />} />
+            </Route>
+          </Route>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  )
 }

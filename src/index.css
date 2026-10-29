@@ -1,26 +1,55 @@
-:root { font-family:Roboto,Arial,sans-serif; color:#1c1b1f; background:#fffbfe; font-synthesis:none; text-rendering:optimizeLegibility; -webkit-font-smoothing:antialiased }
-* { box-sizing:border-box }
-body { margin:0; min-width:320px }
-.simple-login { min-height:100dvh; display:grid; place-items:center; padding:24px; background:#fffbfe }
-.simple-login section { width:min(100%,320px); text-align:center }
-.simple-login .primary-button { border-radius:100px; min-height:48px }
-.simple-login h1 { font-size:30px; margin-bottom:28px }
-button { font:inherit; cursor:pointer }
-a { color:inherit }
-button,a { touch-action:manipulation; -webkit-tap-highlight-color:transparent }
-button:disabled { opacity:.65; cursor:wait }
-:focus-visible { outline:3px solid #6650a4; outline-offset:5px }
-h1,h2 { font-family:inherit }
-h1,h2,p { margin-top:0 }
-.eyebrow { font-size:10px; font-weight:700; letter-spacing:1.8px; display:flex; align-items:center; gap:8px }
-.primary-button { display:flex; align-items:center; justify-content:center; gap:23px; border:0; border-radius:9px; background:#6650a4; color:white; text-decoration:none; padding:15px 18px; width:100%; font-size:13px; font-weight:600; min-height:49px; transition:background .15s }
-.primary-button:hover { background:#503d86 }
-.error-message { background:#fff0ea; color:#97462f; border:1px solid #ebc2b4; padding:13px; border-radius:9px; font-size:13px; line-height:1.6 }
-.status-page { min-height:100dvh; display:grid; place-items:center; padding:25px }
-.status-card { max-width:460px; background:white; padding:35px; border:1px solid #e7e0ec; border-radius:20px; text-align:center }
-.status-card h1 { font-size:25px }
-.status-card p { font-size:14px; line-height:1.8; color:#62705d }
-.status-card .eyebrow { justify-content:center; font-size:9px }
-.spinner { display:inline-block; width:29px; height:29px; border:3px solid #eaddff; border-top-color:#6650a4; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:18px }
-@keyframes spin { to { transform:rotate(360deg) } }
-@media(prefers-reduced-motion:reduce) { *,*::before,*::after{animation:none!important;transition:none!important} }
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: Roboto, Arial, sans-serif;
+  --color-primary: #4f608e;
+  --color-primary-hover: #3d4d78;
+  --color-primary-container: #bdccff;
+  --color-on-container: #293e68;
+  --color-canvas: #faf8ff;
+  --color-surface: #faf8ff;
+  --color-card: #e1e2ec;
+  --color-ink: #303139;
+  --color-muted: #555761;
+  --color-outline: #b2b3c2;
+}
+
+@layer base {
+  :root {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-surface);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    min-width: 0;
+    margin: 0;
+  }
+  button,
+  a {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button {
+    cursor: pointer;
+  }
+  button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
