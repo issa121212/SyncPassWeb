@@ -1,10 +1,8 @@
-import { useAuth } from 'react-oidc-context'
-import { displayName, primaryRole, roleLabels, rolesFromProfile } from './identity'
+import { useContext } from 'react'
+import { IdentityContext } from './identityContext'
 
 export function useIdentity() {
-  const auth = useAuth()
-  const profile: Record<string, unknown> = auth.user?.profile ?? {}
-  const roles = rolesFromProfile(profile)
-  const role = primaryRole(roles)
-  return { name: displayName(profile), roles, role, roleLabel: roleLabels[role] }
+  const identity = useContext(IdentityContext)
+  if (!identity) throw new Error('useIdentity requires IdentityProvider')
+  return identity
 }

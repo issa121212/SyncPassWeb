@@ -3,11 +3,16 @@ import type { AuthProviderProps } from 'react-oidc-context'
 import { returnPath } from './session'
 
 export const cognito = {
-  authority: import.meta.env.VITE_COGNITO_ISSUER || 'https://cognito-idp.us-east-1.amazonaws.com/us-east-1_qf9qh3X5q',
+  authority:
+    import.meta.env.VITE_COGNITO_ISSUER ||
+    'https://cognito-idp.us-east-1.amazonaws.com/us-east-1_qf9qh3X5q',
   clientId: import.meta.env.VITE_COGNITO_CLIENT_ID || '4pp1hrlitnamn0pl2es7e8ejmn',
-  domain: import.meta.env.VITE_COGNITO_DOMAIN || 'https://us-east-1qf9qh3x5q.auth.us-east-1.amazoncognito.com',
+  domain:
+    import.meta.env.VITE_COGNITO_DOMAIN ||
+    'https://us-east-1qf9qh3x5q.auth.us-east-1.amazoncognito.com',
   logoutUri: import.meta.env.VITE_COGNITO_LOGOUT_URI || `${window.location.origin}/`,
-  redirectUri: import.meta.env.VITE_COGNITO_REDIRECT_URI || `${window.location.origin}/auth/callback`,
+  redirectUri:
+    import.meta.env.VITE_COGNITO_REDIRECT_URI || `${window.location.origin}/auth/callback`,
 }
 
 export const authConfig: AuthProviderProps = {
