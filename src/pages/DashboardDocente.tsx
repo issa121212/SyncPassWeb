@@ -2,7 +2,6 @@ import { useIdentity } from '../auth/useIdentity'
 import DashboardHeading from '../components/dashboard/DashboardHeading'
 import WelcomePanel from '../components/dashboard/WelcomePanel'
 import DashboardCards from '../components/dashboard/DashboardCards'
-import PreparationNotice from '../components/dashboard/PreparationNotice'
 
 export default function DashboardDocente() {
   const { name, roleLabel } = useIdentity()
@@ -21,7 +20,6 @@ export default function DashboardDocente() {
         title="Herramientas de coordinación"
         sections={['proyectos', 'eventos', 'asistencias']}
       />
-      <PreparationNotice />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from 'react-oidc-context'
 import IdentityProvider from './IdentityProvider'
+import QueryProvider from '../providers/QueryProvider'
 
 export default function RequireAuth() {
   const auth = useAuth()
@@ -9,8 +10,10 @@ export default function RequireAuth() {
     return <Navigate to="/" replace state={{ returnTo: location.pathname + location.search }} />
   }
   return (
-    <IdentityProvider>
-      <Outlet />
-    </IdentityProvider>
+    <QueryProvider key={auth.user?.profile.sub}>
+      <IdentityProvider>
+        <Outlet />
+      </IdentityProvider>
+    </QueryProvider>
   )
 }
