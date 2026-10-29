@@ -2,6 +2,9 @@ import { useAuth } from 'react-oidc-context'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import RequireAuth from './auth/RequireAuth'
 import LoginPage from './pages/LoginPage'
+import DashboardLayout from './layouts/DashboardLayout'
+import DashboardPage from './features/dashboard/DashboardPage'
+import ModulePage from './features/dashboard/ModulePage'
 
 export default function App() {
   const auth = useAuth()
@@ -10,7 +13,12 @@ export default function App() {
   return <Routes>
     <Route path="/" element={<LoginPage />} />
     <Route path="/auth/callback" element={<Navigate to="/" replace />} />
-    <Route element={<RequireAuth />}><Route path="/app" element={<main aria-label="Área autenticada" />} /></Route>
+    <Route element={<RequireAuth />}>
+      <Route path="/app" element={<DashboardLayout />}>
+        <Route index element={<DashboardPage />} />
+        <Route path=":module" element={<ModulePage />} />
+      </Route>
+    </Route>
     <Route path="*" element={<Navigate to="/" replace />} />
   </Routes>
 }

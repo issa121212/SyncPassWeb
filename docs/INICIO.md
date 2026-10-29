@@ -24,14 +24,17 @@ No hace falta crear .env: la aplicación incluye los identificadores públicos. 
 - Cierre de sesión: http://localhost:5173/
 - Estilo de login administrado asignado al cliente web.
 
-La sesión se guarda en sessionStorage de esta pestaña. No se muestran tokens ni IDs. Después del login, /app queda vacía y protegida hasta implementar los dashboards.
+La sesión se guarda en sessionStorage de esta pestaña. No se muestran tokens ni IDs. Después del login, /app muestra el dashboard según los grupos de Cognito, con el nombre del usuario. Si no hay name, se usa given_name o email, nunca sub.
 
-La pantalla de cuenta y su cierre de sesión se retiraron. Se incorporará el cierre en el dashboard cuando se implemente. Los permisos definitivos siempre los valida el backend.
+El dashboard incluye cierre de sesión: elimina la sesión local y redirige a /logout de Cognito. Esto no implica revocación inmediata de todos los JWT emitidos. Los grupos controlan la navegación, y los permisos definitivos siempre los valida el backend.
 
 ## Estructura
 
 - src/auth: configuración y protección de rutas.
 - src/pages: inicio público con botón Continuar con Cognito.
+- src/layouts: estructura responsiva del dashboard.
+- src/features/dashboard: navegación y páginas por rol.
+- src/components: cierre de sesión.
 - src/App.tsx: rutas.
 
 ## Verificar
@@ -41,10 +44,16 @@ npm test
 npm run build
 ```
 
-Prueba con una cuenta propia: iniciar desde el botón de la app, ingresar en Cognito, confirmar el retorno a /app (vacía), recargarla y comprobar en una ventana sin sesión que /app redirige al inicio. No compartir tokens ni códigos de autorización.
+Prueba con una cuenta propia: iniciar desde el botón de la app, ingresar en Cognito, confirmar el nombre y menú por rol, navegar entre secciones, recargar /app, cerrar sesión y comprobar que /app redirige al inicio. Probar un participante intentando abrir /app/proyectos: debe mostrarse sección no disponible. No compartir tokens ni códigos de autorización.
 
 ## Vercel, próxima etapa
 
 Framework Vite, build npm run build, salida dist. vercel.json permite abrir rutas directamente. Registrar antes las URLs del dominio: https://DOMINIO/auth/callback y https://DOMINIO/. Los retornos usan automáticamente el origen actual.
 
 Esta etapa no consume la API de negocio, ni modifica Android o EC2. Después habrá que aceptar el cliente web en el backend y configurar CORS, manteniendo la validación de firma, issuer, token_use y roles.
+
+## Dashboard por rol
+
+Se conservan los alias de CognitoRoles del backend: estudiantes y monitores son voluntarios de recepción; admin incluye docente. Los grupos desconocidos o ausentes usan participante, igual que el backend. Un usuario con varios roles ve la unión de sus secciones.
+
+Docente: proyectos, eventos y asistencias. Voluntario: eventos y asistencias. Participante: eventos e inscripciones. Las secciones muestran un aviso de preparación; todavía no consultan ni modifican datos reales.
