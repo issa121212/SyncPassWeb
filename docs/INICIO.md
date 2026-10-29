@@ -1,6 +1,6 @@
 # SyncPassWeb — primera etapa
 
-React + Vite + TypeScript + Tailwind CSS con login Cognito (Authorization Code y PKCE). No necesita backend local para esta etapa.
+React + Vite + TypeScript + Tailwind CSS con login Cognito (Authorization Code y PKCE). Usa el backend desplegado en EC2 a través de API Gateway.
 
 ## Ejecutar
 
@@ -55,13 +55,13 @@ Prueba con una cuenta propia: iniciar desde el botón de la app, ingresar en Cog
 
 Framework Vite, build npm run build, salida dist. vercel.json permite abrir rutas directamente. Registrar antes las URLs del dominio: https://DOMINIO/auth/callback y https://DOMINIO/. Los retornos usan automáticamente el origen actual.
 
-Esta etapa no consume la API de negocio, ni modifica Android o EC2. Después habrá que aceptar el cliente web en el backend y configurar CORS, manteniendo la validación de firma, issuer, token_use y roles.
+El CRUD de proyectos ya consume la API de negocio. El backend acepta Android y web y permite el origen local mediante CORS. Ver CRUD_PROYECTOS.md para contratos, permisos y configuración.
 
 ## Dashboard por rol
 
 Se conservan los alias de CognitoRoles del backend: estudiantes y monitores son voluntarios de recepción; admin incluye docente. Los grupos desconocidos o ausentes usan participante, igual que el backend. Un usuario con varios roles ve la unión de sus secciones.
 
-Docente: proyectos, eventos y asistencias. Voluntario: eventos y asistencias. Participante: eventos e inscripciones. Las secciones muestran un aviso de preparación; todavía no consultan ni modifican datos reales.
+Docente: proyectos, eventos y asistencias. Voluntario: eventos y asistencias. Participante: eventos e inscripciones. Proyectos permite gestionar datos reales por API. Los demás módulos mantienen su aviso de preparación.
 
 ## Estilos responsivos
 
