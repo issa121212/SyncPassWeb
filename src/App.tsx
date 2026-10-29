@@ -9,6 +9,7 @@ import PageLoading from './components/PageLoading'
 const DashboardLayout = lazy(() => import('./layouts/DashboardLayout'))
 const DashboardEntry = lazy(() => import('./auth/DashboardEntry'))
 const ModulePage = lazy(() => import('./pages/ModulePage'))
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <Route element={<RequireAuth />}>
             <Route path="/app" element={<DashboardLayout />}>
               <Route index element={<DashboardEntry />} />
+              <Route path="proyectos" element={<ProjectsPage />} />
               <Route path=":module" element={<ModulePage />} />
             </Route>
           </Route>
