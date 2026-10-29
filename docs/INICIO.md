@@ -1,6 +1,6 @@
 # SyncPassWeb — primera etapa
 
-React + Vite + TypeScript con login Cognito (Authorization Code y PKCE). No necesita backend local para esta etapa.
+React + Vite + TypeScript + Tailwind CSS con login Cognito (Authorization Code y PKCE). No necesita backend local para esta etapa.
 
 ## Ejecutar
 
@@ -33,7 +33,12 @@ El dashboard incluye cierre de sesión: elimina la sesión local y redirige a /l
 - src/auth: configuración y protección de rutas.
 - src/pages: inicio público con botón Continuar con Cognito.
 - src/layouts: estructura responsiva del dashboard.
-- src/features/dashboard: navegación y páginas por rol.
+- src/config/navigation.ts: secciones y permisos de navegación.
+- src/pages/DashboardDocente.tsx: coordinación de proyectos y actividades.
+- src/pages/DashboardEstudiante.tsx: recepción y asistencia.
+- src/pages/DashboardParticipante.tsx: actividades e inscripciones.
+- src/components/dashboard: presentación reutilizable de los dashboards.
+- src/auth/DashboardEntry.tsx: selecciona la página según el rol principal.
 - src/components: cierre de sesión.
 - src/App.tsx: rutas.
 
@@ -57,3 +62,7 @@ Esta etapa no consume la API de negocio, ni modifica Android o EC2. Después hab
 Se conservan los alias de CognitoRoles del backend: estudiantes y monitores son voluntarios de recepción; admin incluye docente. Los grupos desconocidos o ausentes usan participante, igual que el backend. Un usuario con varios roles ve la unión de sus secciones.
 
 Docente: proyectos, eventos y asistencias. Voluntario: eventos y asistencias. Participante: eventos e inscripciones. Las secciones muestran un aviso de preparación; todavía no consultan ni modifican datos reales.
+
+## Estilos responsivos
+
+Tailwind CSS se integra mediante @tailwindcss/vite. La paleta azul basada en la captura de Android se declara en src/index.css con @theme. Se usan clases utilitarias para móvil, tablet y escritorio. En móvil el menú pasa a una fila horizontal; las tarjetas se apilan. No hay una carpeta features en el código.
