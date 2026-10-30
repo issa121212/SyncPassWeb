@@ -2,7 +2,6 @@ import { useIdentity } from '../auth/useIdentity'
 import DashboardHeading from '../components/dashboard/DashboardHeading'
 import WelcomePanel from '../components/dashboard/WelcomePanel'
 import DashboardCards from '../components/dashboard/DashboardCards'
-import PreparationNotice from '../components/dashboard/PreparationNotice'
 
 export default function DashboardParticipante() {
   const { name } = useIdentity()
@@ -19,7 +18,6 @@ export default function DashboardParticipante() {
         description="Explora los eventos y talleres, y consulta las actividades en las que participas."
       />
       <DashboardCards title="Tu participación" sections={['eventos', 'inscripciones']} />
-      <PreparationNotice />
     </>
   )
 }

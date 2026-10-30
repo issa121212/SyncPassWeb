@@ -11,6 +11,7 @@ const DashboardEntry = lazy(() => import('./auth/DashboardEntry'))
 const ModulePage = lazy(() => import('./pages/ModulePage'))
 const EventsPage = lazy(() => import('./pages/EventsPage'))
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'))
+const RegistrationsPage = lazy(() => import('./pages/RegistrationsPage'))
 
 export default function App() {
   return (
@@ -24,6 +25,7 @@ export default function App() {
               <Route index element={<DashboardEntry />} />
               <Route path="proyectos" element={<ProjectsPage />} />
               <Route path="eventos" element={<EventsPage />} />
+              <Route path="inscripciones" element={<RegistrationsPage />} />
               <Route path=":module" element={<ModulePage />} />
             </Route>
           </Route>

@@ -8,6 +8,7 @@ import Modal from '../components/Modal'
 import EventForm from '../components/events/EventForm'
 import EventCard from '../components/events/EventCard'
 import PageLoading from '../components/PageLoading'
+import EventRegistration from '../components/events/EventRegistration'
 
 export default function EventsPage() {
   const { roles } = useIdentity()
@@ -142,7 +143,9 @@ export default function EventsPage() {
                       setDeleting(event)
                       remove.reset()
                     }}
-                  />
+                  >
+                    {roles.includes('PARTICIPANTE') && <EventRegistration event={event} />}
+                  </EventCard>
                 </li>
               ))}
             </ul>

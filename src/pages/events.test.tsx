@@ -35,6 +35,10 @@ const initial: Evento = {
   proyectoNombre: project.nombre,
   inscritos: 0,
   presentes: 0,
+  qrContenido: 'EVENTO_7',
+  inscrito: false,
+  esPresente: false,
+  encuestaRespondida: false,
 }
 let events: Evento[]
 let conflict: boolean

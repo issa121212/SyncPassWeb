@@ -11,6 +11,18 @@ function decode<T>(schema: z.ZodType<T>, payload: unknown): T {
 }
 export function eventService(http: HttpClient) {
   return {
+    async register(codigoQr: string) {
+      const event = decode(
+        eventSchema,
+        await http('/api/eventos/inscribirse', { method: 'POST', body: { codigoQr } }),
+      )
+      if (!event.inscrito)
+        throw new ApiError(
+          'El servidor no confirmó tu inscripción. Actualiza la lista antes de volver a intentar.',
+          0,
+        )
+      return event
+    },
     async list(signal?: AbortSignal) {
       return decode(z.array(eventSchema), await http('/api/eventos', { signal }))
     },

@@ -2,14 +2,16 @@
 
 ## Responsabilidades
 
-- pages: las tres páginas de dashboard y las pantallas públicas.
+- pages: dashboards por rol, pantallas públicas y páginas de proyectos, eventos e inscripciones.
 - layouts: estructura y navegación compartidas, sin peticiones de negocio.
 - components: piezas visuales reutilizables y estados de interfaz.
 - auth: Cognito, sesión, selección de dashboard y contexto de identidad.
 - config: definición de las secciones y acceso de navegación.
-- hooks: comportamiento compartido de navegación accesible.
+- hooks: navegación accesible y consultas/mutaciones de negocio con React Query.
+- services: transporte HTTP autenticado y endpoints de la API.
+- types: contratos de respuesta, validación y reglas de presentación.
 
-Los permisos del frontend solo controlan la presentación. La API debe validar el access token y los permisos en cada operación. Los CRUD de proyectos y eventos se conectan a la API; asistencias e inscripciones siguen pendientes.
+Los permisos del frontend solo controlan la presentación. La API debe validar el access token y los permisos en cada operación. Los CRUD de proyectos y eventos y las inscripciones se conectan a la API; el flujo de recepción de asistencias sigue pendiente.
 
 ## React y renderizado
 
@@ -44,4 +46,4 @@ npm run format:check
 
 TypeScript utiliza strict y comprueba accesos a índices. Oxlint comprueba reglas de Hooks, claves y reglas de accesibilidad. Estas herramientas no reemplazan probar teclado, contraste, zoom, varios tamaños de ventana y el login real.
 
-El CRUD de proyectos incorpora contratos Zod, transporte HTTP, formularios con React Hook Form y consultas/mutaciones con TanStack Query. La caché permanece en memoria y se separa por sesión. Ver CRUD_PROYECTOS.md. La gestión de eventos reutiliza estas capas; ver GESTION_EVENTOS.md. Asistencias e inscripciones se incorporarán gradualmente.
+El CRUD de proyectos incorpora contratos Zod, transporte HTTP, formularios con React Hook Form y consultas/mutaciones con TanStack Query. La caché permanece en memoria y se separa por sesión. Ver CRUD_PROYECTOS.md. La gestión de eventos y las inscripciones reutilizan estas capas; ver GESTION_EVENTOS.md e INSCRIPCIONES.md. La recepción de asistencias se incorporará gradualmente.
