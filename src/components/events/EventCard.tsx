@@ -1,15 +1,18 @@
 import { canDeleteEvent, eventStateLabels } from '../../types/evento'
 import type { Evento } from '../../types/evento'
+import type { ReactNode } from 'react'
 export default function EventCard({
   event,
   editable,
   onEdit,
   onDelete,
+  children,
 }: {
   event: Evento
   editable: boolean
   onEdit: () => void
   onDelete: () => void
+  children?: ReactNode
 }) {
   const [date, time] = event.fechaHora.split('T')
   const displayDate = date?.split('-').reverse().join('-')
@@ -64,6 +67,7 @@ export default function EventCard({
           </div>
         )}
       </dl>
+      {children}
       {editable && (
         <footer className="mt-5 border-t border-primary/15 pt-4">
           <div className="flex flex-wrap gap-3">
