@@ -11,7 +11,7 @@
 - services: transporte HTTP autenticado y endpoints de la API.
 - types: contratos de respuesta, validación y reglas de presentación.
 
-Los permisos del frontend solo controlan la presentación. La API debe validar el access token y los permisos en cada operación. Los CRUD de proyectos y eventos y las inscripciones se conectan a la API; el flujo de recepción de asistencias sigue pendiente.
+Los permisos del frontend solo controlan la presentación. La API debe validar el access token y los permisos en cada operación. Los CRUD de proyectos y eventos, las inscripciones y el control de asistencia se conectan a la API; las encuestas siguen pendientes en la web.
 
 ## React y renderizado
 
@@ -46,4 +46,4 @@ npm run format:check
 
 TypeScript utiliza strict y comprueba accesos a índices. Oxlint comprueba reglas de Hooks, claves y reglas de accesibilidad. Estas herramientas no reemplazan probar teclado, contraste, zoom, varios tamaños de ventana y el login real.
 
-El CRUD de proyectos incorpora contratos Zod, transporte HTTP, formularios con React Hook Form y consultas/mutaciones con TanStack Query. La caché permanece en memoria y se separa por sesión. Ver CRUD_PROYECTOS.md. La gestión de eventos y las inscripciones reutilizan estas capas; ver GESTION_EVENTOS.md e INSCRIPCIONES.md. La recepción de asistencias se incorporará gradualmente.
+El CRUD de proyectos incorpora contratos Zod, transporte HTTP, formularios con React Hook Form y consultas/mutaciones con TanStack Query. La caché permanece en memoria y se separa por sesión. Ver CRUD_PROYECTOS.md. La gestión de eventos y las inscripciones reutilizan estas capas; ver GESTION_EVENTOS.md e INSCRIPCIONES.md. El control de asistencia y el QR personal se describen en CONTROL_ASISTENCIA.md.

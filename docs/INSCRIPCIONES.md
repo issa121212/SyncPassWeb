@@ -4,6 +4,7 @@ La rama `feature/inscripciones-eventos` incorpora la participación desde la web
 
 - En `/app/eventos`, el participante puede inscribirse si hay cupos y el evento está PROGRAMADO o EN_CURSO.
 - `/app/inscripciones` muestra únicamente eventos con `inscrito: true` en la respuesta del usuario autenticado, incluidos los cancelados o finalizados.
+- La página muestra Mi QR de asistencia, obtenido de la API, para presentarlo a recepción; ver CONTROL_ASISTENCIA.md.
 - La inscripción no registra asistencia. El estado de asistencia se lee de `esPresente` y se actualiza al volver a consultar la API.
 - Los docentes y voluntarios conservan la consulta de eventos y no reciben controles de inscripción, salvo que también tengan el rol PARTICIPANTE.
 
