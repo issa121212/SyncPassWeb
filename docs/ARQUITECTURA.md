@@ -9,7 +9,7 @@
 - config: definición de las secciones y acceso de navegación.
 - hooks: comportamiento compartido de navegación accesible.
 
-Los permisos del frontend solo controlan la presentación. La API debe validar el access token y los permisos en cada operación. El CRUD de proyectos se conecta a la API; los otros módulos siguen pendientes.
+Los permisos del frontend solo controlan la presentación. La API debe validar el access token y los permisos en cada operación. Los CRUD de proyectos y eventos se conectan a la API; asistencias e inscripciones siguen pendientes.
 
 ## React y renderizado
 
@@ -44,4 +44,4 @@ npm run format:check
 
 TypeScript utiliza strict y comprueba accesos a índices. Oxlint comprueba reglas de Hooks, claves y reglas de accesibilidad. Estas herramientas no reemplazan probar teclado, contraste, zoom, varios tamaños de ventana y el login real.
 
-El CRUD de proyectos incorpora contratos Zod, transporte HTTP, formularios con React Hook Form y consultas/mutaciones con TanStack Query. La caché permanece en memoria y se separa por sesión. Ver CRUD_PROYECTOS.md. Los otros módulos se incorporarán gradualmente.
+El CRUD de proyectos incorpora contratos Zod, transporte HTTP, formularios con React Hook Form y consultas/mutaciones con TanStack Query. La caché permanece en memoria y se separa por sesión. Ver CRUD_PROYECTOS.md. La gestión de eventos reutiliza estas capas; ver GESTION_EVENTOS.md. Asistencias e inscripciones se incorporarán gradualmente.
