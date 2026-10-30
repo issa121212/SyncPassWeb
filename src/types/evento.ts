@@ -27,6 +27,10 @@ export const eventSchema = z.object({
   longitud: z.number().nullable(),
   radioMetros: z.number().int().nullable(),
   estado: z.enum(eventStates),
+  qrContenido: z.string().nullable(),
+  inscrito: z.boolean(),
+  esPresente: z.boolean(),
+  encuestaRespondida: z.boolean(),
 })
 export type Evento = z.infer<typeof eventSchema>
 const numericText = (min: number, max: number, integer = false, optional = false) =>

@@ -34,6 +34,10 @@ describe('contrato de eventos y permisos del backend', () => {
       proyectoNombre: 'Huerto',
       inscritos: 0,
       presentes: 0,
+      qrContenido: 'EVENTO_7',
+      inscrito: false,
+      esPresente: false,
+      encuestaRespondida: false,
       fechaHora: '2026-12-03T09:30:45.123',
     })
     expect(eventPayload(eventDefaults(event)).fechaHora).toBe(event.fechaHora)
@@ -98,6 +102,10 @@ describe('contrato de eventos y permisos del backend', () => {
       proyectoNombre: 'Huerto',
       inscritos: 0,
       presentes: 0,
+      qrContenido: 'EVENTO_7',
+      inscrito: false,
+      esPresente: false,
+      encuestaRespondida: false,
     })
     expect(canDeleteEvent(event)).toBe(true)
     expect(canDeleteEvent({ ...event, inscritos: 1 })).toBe(false)
