@@ -1,6 +1,6 @@
 # Documentación de SyncPassWeb
 
-Documentación de la entrega web 1.0.0, revisada el 30-10-2026. Describe el comportamiento del código y el backend compartido, sin notas temporales de integración.
+Documentación de la entrega web 1.0.1, revisada el 30-10-2026. Describe el comportamiento del código y el backend compartido, sin notas temporales de integración.
 
 1. [Caso original](caso.md).
 2. [Problema, requisitos y diferencias con Android](01-CASO-Y-REQUISITOS.md).

@@ -1,6 +1,6 @@
 # Tecnologías y librerías
 
-Versión del proyecto: 1.0.0. Node requerido: >=22.12.0. Los rangos se toman de package.json y las versiones resueltas de package-lock.json; utilizar npm ci para reproducirlas.
+Versión del proyecto: 1.0.1. Node requerido: >=22.12.0. Los rangos se toman de package.json y las versiones resueltas de package-lock.json; utilizar npm ci para reproducirlas.
 
 ## Dependencias de ejecución
 
