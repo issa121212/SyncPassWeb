@@ -4,6 +4,7 @@ import { useEvents } from '../hooks/useEvents'
 import { errorMessage } from '../services/http'
 import EventCard from '../components/events/EventCard'
 import EventRegistration from '../components/events/EventRegistration'
+import PersonalQr from '../components/attendance/PersonalQr'
 import PageLoading from '../components/PageLoading'
 
 const noAction = () => {}
@@ -45,6 +46,7 @@ function MyRegistrations() {
           {events.isFetching ? 'Actualizando…' : 'Actualizar'}
         </button>
       </header>
+      <PersonalQr />
       {events.isPending && <PageLoading />}
       {events.isError && (
         <p role="alert" className="mb-5 rounded-xl bg-red-50 p-4 text-sm text-red-800">
